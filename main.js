@@ -1,6 +1,6 @@
 var timeMin = 0;
 var timeSec = 3;
-var timerIntervalID = 0;
+var timerIntervalID = null;
 
 function pad (str, max) {
   str = str.toString();
@@ -23,7 +23,7 @@ function updateTimer() {
 
 
 	$(".timer").html(displayString);
-	
+
 	if (timeMin < 1 && timeSec < 1) {
 		$(".timer").css('color', 'red');
 		clearInterval(timerIntervalID);
@@ -37,8 +37,24 @@ function test() {
 
 $(document).ready(function() {
 	$("button").click(function() {
+		var whichButton = $(this).attr("value");
 		console.log("Button pressed");
-		timerIntervalID = setInterval(updateTimer, 1000);
+		switch(whichButton) {
+			case "start":
+				timerIntervalID = setInterval(updateTimer, 1000);
+				break;
+			case "reset":
+				timeMin = 0;
+				timeSec = 3;
+				if (timerIntervalID !== null) {
+					clearInterval(timerIntervalID);
+				}
+
+				$(".timer").css('color', 'black');
+				displayString = timeMin + ":" + pad(timeSec, 2);
+				$(".timer").html(displayString);
+				break;
+		}
 	});
 });
 
