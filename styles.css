@@ -9,3 +9,10 @@
 	margin: 0.2rem;
 	height: 5rem;
 }
+
+input {
+        max-width: 4rem;
+        text-align:center;
+        display:block;
+        margin:0 auto;
+ } 
