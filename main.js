@@ -44,10 +44,10 @@ $(document).ready(function() {
 				timeMin = parseInt($("#min").val());
 				timeSec = parseInt($("#sec").val());
 
-				if (timeMin === NaN || timeSec === NaN) {
-					$(".timer").html("Error: Timer minutes and seconds required. Please fill out fields below");	
-				} else {
+				if ( (timeMin > -1) && (timeSec > -1) ) {
 					timerIntervalID = setInterval(updateTimer, 1000);
+				} else {
+					$(".timer").html("Error: Timer minutes and seconds required. Please fill out fields below with positive integers");	
 				}
 
 				break;
