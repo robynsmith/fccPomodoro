@@ -43,7 +43,13 @@ $(document).ready(function() {
 			case "start":
 				timeMin = parseInt($("#min").val());
 				timeSec = parseInt($("#sec").val());
-				timerIntervalID = setInterval(updateTimer, 1000);
+
+				if (timeMin === NaN || timeSec === NaN) {
+					$(".timer").html("Error: Timer minutes and seconds required. Please fill out fields below");	
+				} else {
+					timerIntervalID = setInterval(updateTimer, 1000);
+				}
+
 				break;
 			case "reset":
 				timeMin = parseInt($("#min").val());
