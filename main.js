@@ -41,11 +41,13 @@ $(document).ready(function() {
 		console.log("Button pressed");
 		switch(whichButton) {
 			case "start":
+				timeMin = parseInt($("#min").val());
+				timeSec = parseInt($("#sec").val());
 				timerIntervalID = setInterval(updateTimer, 1000);
 				break;
 			case "reset":
-				timeMin = 0;
-				timeSec = 3;
+				timeMin = parseInt($("#min").val());
+				timeSec = parseInt($("#sec").val());
 				if (timerIntervalID !== null) {
 					clearInterval(timerIntervalID);
 				}
