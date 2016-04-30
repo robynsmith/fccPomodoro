@@ -39,11 +39,11 @@ $(document).ready(function() {
 	$("button").click(function() {
 		var whichButton = $(this).attr("value");
 		console.log("Button pressed");
+		timeMin = parseInt($("#min").val());
+		timeSec = parseInt($("#sec").val());
+
 		switch(whichButton) {
 			case "start":
-				timeMin = parseInt($("#min").val());
-				timeSec = parseInt($("#sec").val());
-
 				if ( (timeMin > -1) && (timeSec > -1) ) {
 					timerIntervalID = setInterval(updateTimer, 1000);
 				} else {
@@ -52,8 +52,6 @@ $(document).ready(function() {
 
 				break;
 			case "reset":
-				timeMin = parseInt($("#min").val());
-				timeSec = parseInt($("#sec").val());
 				if (timerIntervalID !== null) {
 					clearInterval(timerIntervalID);
 				}
